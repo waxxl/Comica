@@ -8,15 +8,16 @@ public class FastImageProcessingView extends GLSurfaceView {
     public FastImageProcessingView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         setDebugFlags(3);
-        a();
+        mo53631a();
     }
 
     /* access modifiers changed from: protected */
-    public void a() {
+    /* renamed from: a */
+    public void mo53631a() {
         setEGLContextClientVersion(2);
     }
 
-    public void setPipeline(a aVar) {
+    public void setPipeline(FastImageProcessingPipeline aVar) {
         setRenderer(aVar);
         setRenderMode(0);
     }

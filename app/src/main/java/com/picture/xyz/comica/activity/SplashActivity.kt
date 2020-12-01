@@ -1,9 +1,10 @@
-package com.picture.xyz.comica.activity
+package com.picture.xyz.comica.p246gr.gamebrain.comica.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.picture.xyz.comica.R
+import com.picture.xyz.comica.comica.MainActivity
+import com.picture.xyz.comica.p246gr.gamebrain.comica.R
 
 class SplashActivity : AppCompatActivity() {
 

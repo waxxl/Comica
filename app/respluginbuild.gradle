@@ -1,0 +1,69 @@
+//ZZ 1.
+apply plugin: 'AndResFileGuard'
+
+//ZZ 2.
+String RESKEY = "HJfdshkjdgjfdskf" //16字节 128位
+String ENCResDirName = "edc"  //加密資源目錄名稱，最好一個應用改一個
+String ENCArscName = "vbc.xml" //加密resouce.arsc名稱，最好一個應用改一個
+andResFileGuard {
+    key = RESKEY
+    // add <yourpackagename>.R.drawable.icon into whitelist.
+    // because the launcher will get the icon with his name
+    whiteList = [
+            "R.mipmap.ic_launcher",
+            "R.mipmap.ic_launcher_round",
+            //https://docs.fabric.io/android/crashlytics/build-tools.html
+            "R.string.app_name",
+            "R.bool.abc",
+            "R.xml.network_security_config",
+            "R.string._facebook_key",
+            "R.integer.google_play_services_version",
+            "R.bool.enable_system_alarm_service_default",
+            "R.bool.enable_system_job_service_default",
+            "R.bool.workmanager_test_configuration",
+            "R.layout.aaaa",
+            "R.drawable.loading_bg",
+            "R.drawable.color_palette",
+            "R.layout.activity_splash"
+            //"R.style.AppTheme5",  // Theme,style 建议不要加到白名单，如果一定要加，那么和该style相关的资源引用，如继承，如颜色等 都需要加入白名单中
+//"R.id.*",//ZZ 3. 白名单,加其他需要保留的资源名,可以使用通配符
+//"R.font.*",
+//"R.layout.*",
+//"R.mipmap.*",
+//"R.raw.*",
+//"R.xml.*"
+    ]
+    //打包时自动使用签名（配置再 signingConfig signingConfigs.release 中的）
+    useSign = true
+    encArscName = ENCArscName
+    encResDirName = ENCResDirName
+//    sourceApk = "D:\\lgdx161\\restest\\app\\build\\outputs\\apk\\debug\\app-debug.apk"
+//    sourceBuildType = "Debug"
+//    finalApkBackupPath = "${project.rootDir}\\final.apk"
+}
+
+android {
+    defaultConfig {
+        //ZZ 4. 解密过程需要的  解密的AES key 和 加密后的resouce.arsc 和 res 文件的名称
+        buildConfigField "String", "RESKEY", "\"${RESKEY}\""
+        buildConfigField "String", "ENCR", "\"${ENCResDirName}\""
+        buildConfigField "String", "ENCA", "\"${ENCArscName}\""
+    }
+
+    //ZZ 5. 手动写id ，可以关闭
+    aaptOptions {
+        File publicTxtFile = project.rootProject.file('public.txt')
+        println "publicTxtFile " + publicTxtFile
+        if (publicTxtFile.exists()) {
+//            additionalParameters "--stable-ids", "${project.rootProject.file('public.txt').absolutePath}"
+        } else {
+            additionalParameters "--emit-ids", "${project.rootProject.file('public.txt').absolutePath}"
+        }
+//        ignoreAssetsPattern '*'
+//        ignoreAssets '*'
+    }
+
+    dependencies {
+        implementation group: 'commons-codec', name: 'commons-codec', version: '1.15'
+    }
+}

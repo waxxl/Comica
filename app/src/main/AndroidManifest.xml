@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.picture.xyz.comica">
+    package="com.picture.xyz.comica.p246gr.gamebrain.comica">
+
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -17,10 +22,19 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.MainActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.MainActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name="com.soundcloud.android.crop.CropImageActivity"/>
+        <activity
+            android:name="com.soundcloud.android.crop.CropImageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.picture.xyz.comica.comica.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.picture.xyz.comica.comica.CaricatureActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

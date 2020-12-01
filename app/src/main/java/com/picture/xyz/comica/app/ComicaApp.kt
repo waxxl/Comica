@@ -1,4 +1,4 @@
-package com.picture.xyz.comica.app
+package com.picture.xyz.comica.p246gr.gamebrain.comica.app
 
 import android.app.Application
 import android.content.Context

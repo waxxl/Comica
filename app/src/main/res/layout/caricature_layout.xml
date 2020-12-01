@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#333333"
+    android:orientation="vertical"
+    android:padding="1dp">
+
+    <com.picture.xyz.comica.imageprocessing.FastImageProcessingView
+        android:id="@+id/preview"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:orientation="horizontal" />
+
+    <com.picture.xyz.comica.imageprocessing.FastImageProcessingView
+        android:id="@+id/menu"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:orientation="horizontal" />
+
+    <com.picture.xyz.comica.comica.ImageViewTarget
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal"
+            android:padding="0dp">
+
+            <ImageView
+                android:id="@+id/adjustments"
+                android:layout_width="@dimen/icon_width"
+                android:layout_height="@dimen/icon_width"
+                android:layout_margin="3dp"
+                android:background="#00000000"
+                android:clickable="true"
+                android:onClick="buttonClicked"
+                android:scaleType="fitXY" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/nofilter"
+                android:layout_width="@dimen/icon_width"
+                android:layout_height="@dimen/icon_width"
+                android:layout_margin="3dp"
+                android:background="#00000000"
+                android:clickable="true"
+                android:onClick="buttonClicked"
+                android:scaleType="fitXY" />
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:id="@+id/effects_scroll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="0dp"
+            android:background="#333333"
+            android:drawingCacheQuality="high"
+            android:orientation="horizontal"
+            android:scrollbars="none"
+            android:stretchColumns="false">
+
+            <LinearLayout
+                android:id="@+id/effects_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:orientation="horizontal" />
+        </HorizontalScrollView>
+
+        <LinearLayout
+            android:id="@+id/effect_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:paddingBottom="30dp"
+            android:showDividers="middle"
+            android:visibility="gone" />
+    </LinearLayout>
+</FrameLayout>
